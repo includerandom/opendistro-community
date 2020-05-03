@@ -25,7 +25,7 @@ spec:
   replicas: {{ .Values.elasticsearch.master.replicas }}
   selector: 
     matchLabels:
-{{ include "opendistro-es.labels.standard" . | indent 6 }}
+      app: {{ template "opendistro-es.fullname" . }}
       role: master
   updateStrategy:
     type: {{ .Values.elasticsearch.master.updateStrategy }}
@@ -33,7 +33,7 @@ spec:
   template:
     metadata:
       labels:
-{{ include "opendistro-es.labels.standard" . | indent 8 }}
+        app: {{ template "opendistro-es.fullname" . }}
         role: master
       annotations:
         {{/* This forces a restart if the secret config has changed */}}

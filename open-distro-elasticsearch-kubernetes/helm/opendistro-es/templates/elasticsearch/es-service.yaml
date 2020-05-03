@@ -32,7 +32,6 @@ spec:
     - name: metrics
       port: 9600
   selector:
-    app: {{ template "opendistro-es.fullname" . }}
     role: client
   type: {{ .Values.elasticsearch.client.service.type }}
 {{- end }}
