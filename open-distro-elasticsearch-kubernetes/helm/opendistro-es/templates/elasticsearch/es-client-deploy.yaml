@@ -23,9 +23,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.elasticsearch.client.replicas }}
-  selector: 
+  selector:
     matchLabels:
-{{ include "opendistro-es.labels.standard" . | indent 6 }}
+      app: {{ template "opendistro-es.fullname" . }}
       role: client
   template:
     metadata:

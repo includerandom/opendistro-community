@@ -24,9 +24,9 @@ metadata:
 spec:
   serviceName: {{ template "opendistro-es.fullname" . }}-data-svc
   replicas: {{ .Values.elasticsearch.data.replicas }}
-  selector: 
+  selector:
     matchLabels:
-{{ include "opendistro-es.labels.standard" . | indent 6 }}
+      app: {{ template "opendistro-es.fullname" . }}
       role: data
   updateStrategy:
     type: {{ .Values.elasticsearch.data.updateStrategy }}
